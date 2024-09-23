@@ -1,9 +1,6 @@
 import React from 'react';
 
-// Component props.
-interface SinglePageProps {}
-
-const SinglePage: React.FC<SinglePageProps> = () => {
+const SinglePage = () => {
   return <div>SinglePage</div>;
 };
 

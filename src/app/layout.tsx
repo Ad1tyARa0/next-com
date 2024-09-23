@@ -1,14 +1,16 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import { Navbar } from "@/components/navbar/navbar";
-import { Footer } from "@/components/footer/footer";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
+import { Navbar } from '@/components/navbar/navbar';
+import { Footer } from '@/components/footer/footer';
+import '@mantine/core/styles.css';
+import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "Lama Dev E-Commerce Application",
-  description: "A complete e-commerce application with Next.js and Wix",
+  title: 'Lama Dev E-Commerce Application',
+  description: 'A complete e-commerce application with Next.js and Wix',
 };
 
 export default function RootLayout({
@@ -18,16 +20,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
+      <head>
+        <ColorSchemeScript />
+      </head>
       <body className={inter.className}>
-        <header>
-          <Navbar />
-        </header>
+        <MantineProvider>
+          <header>
+            <Navbar />
+          </header>
 
-        <main>{children}</main>
+          <main>{children}</main>
 
-        <footer>
-          <Footer />
-        </footer>
+          <footer>
+            <Footer />
+          </footer>
+        </MantineProvider>
       </body>
     </html>
   );

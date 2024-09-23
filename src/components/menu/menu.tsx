@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
 
 // Component props.
 interface MenuProps {}
 
-export const Menu: React.FC<MenuProps> = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+export const Menu = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>

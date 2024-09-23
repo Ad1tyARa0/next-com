@@ -1,0 +1,54 @@
+.header {
+  height: rem(60px);
+  padding-block: 10px;
+  padding-left: var(--mantine-spacing-md);
+  padding-right: var(--mantine-spacing-md);
+  background-color: #1c392f;
+}
+
+.inner {
+  height: rem(60px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: rem(24px);
+  font-weight: bold;
+  color: var(--mantine-color-white);
+}
+
+.links {
+  flex: 1;
+  justify-content: center;
+}
+
+.link {
+  display: block;
+  line-height: 1;
+  padding: rem(8px) rem(12px);
+  border-radius: var(--mantine-radius-sm);
+  text-decoration: none;
+  color: var(--mantine-color-white);
+  font-size: var(--mantine-font-size-sm);
+  font-weight: 500;
+
+  @mixin hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.search {
+  width: rem(200px);
+}
+
+.burgerMenu {
+  color: var(--mantine-color-white);
+}
+
+@media (max-width: mantine-breakpoint-sm) {
+  .search {
+    display: none;
+  }
+}

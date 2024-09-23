@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import { Cart } from '../cart/cart';
 
 // Component props.
 interface NavbarIconsProps {}
@@ -50,14 +51,22 @@ export const NavbarIcons: React.FunctionComponent<NavbarIconsProps> = () => {
         height={24}
         className='cursor-pointer'
       />
-      <Image
-        src='/cart.png'
-        alt='Cart'
-        width={24}
-        height={24}
-        className='cursor-pointer'
-        onClick={() => setIsCartOpen(!isCartOpen)}
-      />
+      <div className='relative cursor-pointer'>
+        <Image
+          src='/cart.png'
+          alt='Cart'
+          width={24}
+          height={24}
+          className='cursor-pointer'
+          onClick={() => setIsCartOpen(!isCartOpen)}
+        />
+
+        <div className='absolute -top-4 -right-4 w-6 h-6 bg-primary rounded-full text-white text-sm flex items-center justify-center'>
+          2
+        </div>
+
+        {isCartOpen ? <Cart isEmpty={false} /> : null}
+      </div>
     </div>
   );
 };
