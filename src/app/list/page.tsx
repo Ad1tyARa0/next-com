@@ -1,13 +1,25 @@
 import { Filter } from '@/components/filter/filter';
+import { ProductList } from '@/components/product-list/product-list';
+import { wixClientServer } from '@/lib/server/wix-client-server';
+import { Skeleton } from '@mantine/core';
 import Image from 'next/image';
-import React from 'react';
+import { Suspense } from 'react';
+// import React from 'react';
 
 // Component props.
-interface listPageProps {}
+// interface listPageProps {
+//   searchParams: string;
+// }
 
-const listPage: React.FunctionComponent<listPageProps> = () => {
+const ListPage = async ({ searchParams }: { searchParams: any }) => {
+  const wixClient = await wixClientServer();
+
+  const res = await wixClient.collections.getCollectionBySlug(
+    searchParams.cat || 'all-products'
+  );
+
   return (
-    <div className='h-20 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative'>
+    <div className='h-20 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative h-max'>
       {/* CAMPAIGN */}
       <div className='hidden bg-pink-50 px-4 sm:flex justify-between h-64'>
         <div className='w-2/3 flex flex-col items-center justify-center gap-8'>
@@ -27,18 +39,18 @@ const listPage: React.FunctionComponent<listPageProps> = () => {
       <Filter />
       {/* PRODUCTS */}
       <h1 className='mt-12 text-xl font-semibold'>
-        {/* {cat?.collection?.name} For You! */}
+        {res?.collection?.name} For You!
       </h1>
-      {/* <Suspense fallback={<Skeleton />}>
+
+      <Suspense fallback={<Skeleton />}>
         <ProductList
           categoryId={
-            cat.collection?._id || '00000000-000000-000000-000000000001'
+            res.collection?._id || '00000000-000000-000000-000000000001'
           }
-          searchParams={searchParams}
         />
-      </Suspense> */}
+      </Suspense>
     </div>
   );
 };
 
-export default listPage;
+export default ListPage;
