@@ -61,8 +61,6 @@ const CustomizeProducts = ({
                 [option.name!]: choice.description!,
               });
 
-              console.log(disabled);
-
               const selected =
                 selectedOptions[option.name!] === choice.description;
 

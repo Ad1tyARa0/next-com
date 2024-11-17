@@ -26,7 +26,6 @@ export const ProductList: FC<ProductListProps> = async ({
   return (
     <div className='mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap'>
       {res.items.map((e) => {
-        console.log(e);
         return (
           <Link
             href={'/' + e.slug}
